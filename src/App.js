@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import Prestional from './component/Prestional'
+import {connect} from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.css';
+function App(props) {
+  let style = {background : props.bg};
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App " style={style}>
+      <div className="container">
+        <div className="row full align-items-center justify-content-center">
+          <Prestional/>
+        </div>
+      </div>
     </div>
   );
 }
-
-export default App;
+let mapStateToProps =(state)=>{
+  return {
+    bg : state.backgrounds
+  }
+}
+export default connect(mapStateToProps)(App);
